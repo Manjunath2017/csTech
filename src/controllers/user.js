@@ -42,3 +42,14 @@ module.exports.getUsers = async(request, response)=>{
     }
 }
 
+//route: localhost:5000/api/user
+//Description: Get Single user
+module.exports.getSingleUser = async(request, response)=>{
+    try{
+        //get user by ID
+        const result = await user.findById({_id:request.params.id});
+        response.status(200).send(result);
+    }catch(error){
+        response.status(500).send(`error: ${error}`);
+    }
+}

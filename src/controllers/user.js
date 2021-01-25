@@ -46,10 +46,24 @@ module.exports.getUsers = async(request, response)=>{
 //Description: Get Single user
 module.exports.getSingleUser = async(request, response)=>{
     try{
-        //get user by ID
-        const result = await user.findById({_id:request.params.id});
+        //get user by ID... 'request.params.id' means get value from URL
+        const result = await user.findById(request.params.id);
         response.status(200).send(result);
     }catch(error){
-        response.status(500).send(`error: ${error}`);
+        response.status(400).send(`error: ${error}`);
     }
+}
+
+//route: localhost:5000/api/user
+//Description: Update user's ID
+module.exports.editUser = async(request, response)=>{
+    try {
+        console.log(request.params.id);
+        //findById and Update 
+        const result = await user.findByIdAndUpdate(request.params.id, {$set:request.body}, {new:true});
+        response.status(200).send(result);
+      }    
+      catch (error) {
+        response.status(400).send(`error: ${error}`);
+      }
 }

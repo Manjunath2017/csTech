@@ -10,7 +10,7 @@ require('./src/db/dbConnection');
 
 //user router
 const router = require('./src/routes/route');
-app.use('/api/user', router);
+app.use('/api/', router);
 
 //server listening on port 5000
 app.listen(process.env.PORT || 3002, ()=>{

@@ -12,8 +12,7 @@ const user = mongoose.Schema({
     email:{
         type:String,
         require:[true, 'Email is required!'],
-        lowercase: true,
-        unique:true
+        lowercase: true
     },
     salary:{
         type:Number,

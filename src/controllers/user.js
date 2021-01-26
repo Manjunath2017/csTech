@@ -101,7 +101,7 @@ module.exports.deleteUser = async(request, response)=>{
      const userExist = await user.findById(id);
     if(id === `${userExist._id}`){
         try{
-            const deleteUser=await user.deleteOne({id});
+            const deleteUser=await user.findByIdAndDelete({'_id':id});
             response.send('user deleted!');
         }catch(error){
             // 400 bad request

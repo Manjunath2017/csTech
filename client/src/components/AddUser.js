@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import axios from 'axios';
 
-const AddUser = (props) => {
+const AddUser = () => {
   var userData = {
     name: "",
     email: "",
@@ -25,6 +25,15 @@ const AddUser = (props) => {
   };
 
   const sendFormData = async()  => {
+    if(name.length === 0){
+      alert("Name is required!");
+    }
+    if(email.length === 0){
+      alert("Email is required!");
+    }
+    if(salary.length === 0){
+      alert("Salary is required!");
+    }
     // console.log(inputValue);
     try{
       const config={
@@ -52,6 +61,7 @@ const AddUser = (props) => {
                 onChange={inputTextHandler}
                 name="name"
                 value={name}
+                required={true}
               />
             </CardContent>
           </Grid>
@@ -63,6 +73,7 @@ const AddUser = (props) => {
                 onChange={inputTextHandler}
                 name="email"
                 value={email}
+                required={true}
               />
             </CardContent>
           </Grid>
@@ -71,9 +82,11 @@ const AddUser = (props) => {
               <TextField fullWidth
                 label="Salary"
                 color="secondary"
+                type="number"
                 onChange={inputTextHandler}
                 name="salary"
                 value={salary}
+                required={true}
               />
             </CardContent>
           </Grid>

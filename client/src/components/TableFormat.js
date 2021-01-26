@@ -9,7 +9,9 @@ import {
 } from "@material-ui/core";
 import Button from '@material-ui/core/Button'
 import axios from "axios";
-
+const style={
+  fontSize:"16px"
+}
 const TableFormat = () => {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,8 @@ const deleteRow = async id =>{
   if(window.confirm('Are you sure? This cannot be undone! ')){
     try {
         await axios.delete(`/api/user/${id}`); 
-        alert('Rcord deleted!');
+        alert('Record deleted!');
+        // window.location = '/';
     } catch (error) {
       alert(`Something went wrong!`);
     }
@@ -45,7 +48,6 @@ const editRow = async user =>{
   return (
     <Fragment>
       <div>
-        TableFormat...
         <TableContainer>
           <Table>
             <TableHead>
@@ -62,9 +64,10 @@ const editRow = async user =>{
                 <TableCell align="center" className="tableHeader">
                   Designation
                 </TableCell>
-                <TableCell align="center" className="tableHeader">
+                <TableCell align="right" className="tableHeader">
                   Action
                 </TableCell>
+                <TableCell align="center" className="tableHeader"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -75,9 +78,11 @@ const editRow = async user =>{
                     <TableCell align="center">{user.email}</TableCell>
                     <TableCell align="center">{user.salary}</TableCell>
                     <TableCell align="center">{user.designation}</TableCell>
-                    <TableCell>
-                    <Button variant="contained" color="secondary" onClick = { ( ) => deleteRow ( user._id ) } > Delete</Button>&nbsp;&nbsp;&nbsp; 
-                    <Button variant="contained"  onClick = { ( ) => editRow ( user ) } > Edit</Button>
+                    <TableCell align="right">
+                    <Button variant="contained" color="secondary" onClick = { ( ) => deleteRow ( user._id ) } > Delete</Button>
+                    </TableCell>
+                    <TableCell align="left">
+                      <Button variant="contained"  onClick = { ( ) => editRow ( user ) } > Edit</Button>
                     </TableCell>
                   </TableRow>
                 ))

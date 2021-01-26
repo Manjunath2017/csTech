@@ -55,6 +55,23 @@ module.exports.getSingleUser = async(request, response)=>{
     }
 }
 
+//route: localhost:5000/api/user/filter
+//Description: Find by name and email
+module.exports.findByNameAndEmail = async(request, response)=>{
+    try{
+        const {name, email}=request.query;
+        console.log(name, email);
+
+        //db.newusers.find({"name":{$regex:/Manjun/}, "email":{$regex:/m/} }).pretty();
+        // const result = await user.find({"name":`{$regrex:/${name}/}` , "email":`{$regrex:/${email}/}`});
+        console.log(result);
+        response.status(200).send(result);
+    }catch(error){
+        //400 bad request
+        response.status(400).send(`error: ${error}`);
+    }
+}
+
 //route: localhost:5000/api/user
 //Description: Update user's ID
 module.exports.editUser = async(request, response)=>{

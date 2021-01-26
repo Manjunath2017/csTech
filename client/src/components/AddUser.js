@@ -1,66 +1,91 @@
 import React, { Fragment, useState } from "react";
-import Button from '@material-ui/core/Button';
-import axios from 'axios';
+import Button from "@material-ui/core/Button";
 
-import { 
-    TableContainer,
-    TableHead,
-    TableCell,
-    TableRow,
-    Table,
-    TextField,
-    MenuItem,
-    InputLabel,
-    Select
-    } from '@material-ui/core'
+import {
+  CardContent,
+  TextField,
+  Grid,
+  NativeSelect
+} from "@material-ui/core";
 
-  const AddUser=()=> {
-    var userData={
-      name:"",
-      email:"",
-      salary:"",
-      designation:""
-    }
-    var [inputValue, setInputValue] = useState(userData);
-    var {name, email, salary, designation}=inputValue;
+const AddUser = () => {
+  var userData = {
+    name: "",
+    email: "",
+    salary: "",
+    designation: "",
+  };
+  var [inputValue, setInputValue] = useState(userData);
+  var { name, email, salary, designation } = inputValue;
 
-    const inputTextHandler = e =>{
-      e.preventDefault();
-      setInputValue({...inputValue, [e.target.name]:e.target.value})
-      console.log(e.target.value);
-    }
+  const inputTextHandler = (e) => {
+    e.preventDefault();
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  };
 
-    const postData = data =>{
-      console.log(data);
-    }
-    return (
-      <Fragment>
-        <div>
-         <form>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell> <TextField  label="Name" color="secondary" onChange={inputTextHandler} name="name" value={name}/> </TableCell>
-                    <TableCell> <TextField  label="Email" color="secondary" onChange={inputTextHandler} name="email" value={email}/> </TableCell>
-                    <TableCell> <TextField  label="Salary" color="secondary" onChange={inputTextHandler} name="salary" value={salary}/> </TableCell>
-                    <TableCell>  
-                        <InputLabel id="demo-simple-select-label" onChange={inputTextHandler} name="designation" value={designation}>Designation</InputLabel>
-                        <Select labelId="demo-simple-select-label" name="designation" value="" >
-                          <MenuItem value="SoftwareArchitect">Software Architect</MenuItem>
-                          <MenuItem value="CEO">CEO</MenuItem>
-                          <MenuItem value="BackendDeveloper">Backend Developer</MenuItem>
-                          <MenuItem value="BackendDeveloper">Frontend Developer</MenuItem>
-                        </Select>
-                   </TableCell>
-                   <TableCell> <Button variant="contained" color="primary" onChange={postData}> Submit </Button> </TableCell>
-                  </TableRow>
-                </TableHead>
-              </Table>  
-            </TableContainer> 
-          </form> 
-        </div>
-      </Fragment>
-    );
-}
+  const sendFormData = ()  => {
+    console.log(inputValue);
+  };
+  return (
+    <Fragment>
+      <div>
+        <Grid container justify="center">
+          <Grid item xs={12} md={5} sm={5} className="card">
+            <CardContent>
+              <TextField fullWidth
+                label="Name"
+                color="secondary"
+                onChange={inputTextHandler}
+                name="name"
+                value={name}
+              />
+            </CardContent>
+          </Grid>
+          <Grid item xs={12} md={5} sm={5} className="card">
+            <CardContent>
+              <TextField fullWidth
+                label="Email"
+                color="secondary"
+                onChange={inputTextHandler}
+                name="email"
+                value={email}
+              />
+            </CardContent>
+          </Grid>
+          <Grid item xs={12} md={5} sm={5} className="card">
+            <CardContent color="secondary">
+              <TextField fullWidth
+                label="Salary"
+                color="secondary"
+                onChange={inputTextHandler}
+                name="salary"
+                value={salary}
+              />
+            </CardContent>
+          </Grid>
+          <Grid item xs={12} md={5} sm={5} className="card" >
+            <CardContent> <br />
+              <NativeSelect fullWidth
+                name="designation"
+                value={designation}
+                onChange={inputTextHandler}
+              >
+                <option value="">Select Designation</option>
+                <option value="SoftwareArchitect">Software Architect</option>
+                <option value="CEO">CEO</option>
+                <option value="BackendDeveloper">Backend Developer</option>
+                <option value="FrontendDeveloper">Frontend Developer</option>
+              </NativeSelect>
+            </CardContent>
+          </Grid>
+          <Grid item xs={12} md={10} sm={10} className="card">
+            <CardContent color="secondary">
+            <Button fullWidth variant="contained" color="primary" onClick = { sendFormData } > Submit</Button>
+            </CardContent>
+          </Grid>
+        </Grid>
+      </div>
+    </Fragment>
+  );
+};
 export default AddUser;

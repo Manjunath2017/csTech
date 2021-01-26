@@ -1,5 +1,6 @@
 const app = require('express')();
 const user = require('../model/users');
+const mongoose = require('mongoose');
 
 //route: localhost:5000/api/adduser
 //Description: add users detail
@@ -15,8 +16,6 @@ module.exports.addUser = async (request, response) => {
     //check if user exist?
     if(userExist === userEmail)
         return response.send(`Please try with different email!`);
-    
-
     //collect user detail and store in collectUserData variable
     const collectUserData = new user({ name, email, salary, designation });
 
@@ -38,6 +37,7 @@ module.exports.getUsers = async(request, response)=>{
         const result=await user.find({});
         response.status(200).send(result);
     }catch(error){
+        //400 bad request
         response.status(500).send(`error: ${error}`);
     }
 }
@@ -50,6 +50,7 @@ module.exports.getSingleUser = async(request, response)=>{
         const result = await user.findById(request.params.id);
         response.status(200).send(result);
     }catch(error){
+        //400 bad request
         response.status(400).send(`error: ${error}`);
     }
 }
@@ -64,6 +65,32 @@ module.exports.editUser = async(request, response)=>{
         response.status(200).send(result);
       }    
       catch (error) {
+        //400 bad request
         response.status(400).send(`error: ${error}`);
       }
+}
+//route: localhost:5000/api/user/:id
+//Description: Delete user
+
+module.exports.deleteUser = async(request, response)=>{
+    const id = request.params.id;   
+    const valid=mongoose.Types.ObjectId.isValid(id);
+    //check if ID is valid?
+    if(!valid){
+        //400 bad request
+        return response.status(400).send('Invalid ID');
+    }
+     //find by user
+     const userExist = await user.findById(id);
+    if(id === `${userExist._id}`){
+        try{
+            const deleteUser=await user.deleteOne({id});
+            response.send('user deleted!');
+        }catch(error){
+            // 400 bad request
+            response.status(400).send(`error: ${error}`)
+        }
+    }else{
+        return response.status(400).send('user does not exist! ');
+    }
 }

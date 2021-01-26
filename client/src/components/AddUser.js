@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import Button from '@material-ui/core/Button';
 
-import { TableContainer,
+import { 
+    TableContainer,
     TableHead,
     TableCell,
     TableRow,
@@ -29,7 +30,7 @@ const submitFormData=()=>{
                     <TableCell> <TextField  label="Salary" color="secondary" /> </TableCell>
                     <TableCell>  
                         <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                        <Select labelId="demo-simple-select-label" value=""  >
+                        <Select labelId="demo-simple-select-label" name="designation" value="" >
                           <MenuItem value="SoftwareArchitect">Software Architect</MenuItem>
                           <MenuItem value="CEO">CEO</MenuItem>
                           <MenuItem value="BackendDeveloper">Backend Developer</MenuItem>

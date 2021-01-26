@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { TableContainer,
   TableHead,
   TableCell,
@@ -9,9 +9,26 @@ import { TableContainer,
   InputLabel,
   Select,
   FormControl
-      } from '@material-ui/core'
+      } from '@material-ui/core';
 
-const TableFormat=()=> {
+import axios from "axios";
+
+const TableFormat=()=> {  
+  const [result, setResult] = useState([]);
+  const [error, setError] = useState('');
+  
+  useEffect(() => {
+      axios
+      .get(`http://localhost:5000/api/users`)
+      .then(response => {
+        setResult(response.data);
+        console.log(response.data);
+      })
+      .catch(error => {
+        setError('Error while fetching data');
+      });
+  }, [error]);
+
   return (
       <Fragment>
         <div>

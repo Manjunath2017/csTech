@@ -34,7 +34,7 @@ module.exports.addUser = async (request, response) => {
 module.exports.getUsers = async(request, response)=>{
     try{
         //get user details
-        const result=await user.find({});
+        const result=await user.find({}).sort({date:-1});
         response.status(200).send(result);
     }catch(error){
         //400 bad request

@@ -8,15 +8,11 @@ import {
   TableBody,
 } from "@material-ui/core";
 import Button from '@material-ui/core/Button'
-
 import axios from "axios";
-
 
 const TableFormat = () => {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
-
-
 
   useEffect(() => {
     axios
@@ -31,7 +27,7 @@ const TableFormat = () => {
       });
   }, [loading]);
 
-const deleteRow =async id =>{
+const deleteRow = async id =>{
 
   if(window.confirm('Are you sure? This cannot be undone! ')){
     try {
@@ -41,6 +37,10 @@ const deleteRow =async id =>{
       alert(`Something went wrong!`);
     }
   }
+}
+
+const editRow = async user =>{
+  console.log('');
 }
   return (
     <Fragment>
@@ -71,12 +71,13 @@ const deleteRow =async id =>{
               {result ? (
                 result.map((user) => (
                   <TableRow key={user._id}>
-                    <TableCell align="left">{user.name}</TableCell>
+                    <TableCell align="center">{user.name}</TableCell>
                     <TableCell align="center">{user.email}</TableCell>
                     <TableCell align="center">{user.salary}</TableCell>
                     <TableCell align="center">{user.designation}</TableCell>
                     <TableCell>
-                    <Button variant="contained" color="primary" onClick = { ( ) => deleteRow ( user._id ) } > Delete</Button>
+                    <Button variant="contained" color="secondary" onClick = { ( ) => deleteRow ( user._id ) } > Delete</Button>&nbsp;&nbsp;&nbsp; 
+                    <Button variant="contained"  onClick = { ( ) => editRow ( user ) } > Edit</Button>
                     </TableCell>
                   </TableRow>
                 ))

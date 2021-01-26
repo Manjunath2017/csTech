@@ -7,8 +7,9 @@ import {
   Grid,
   NativeSelect
 } from "@material-ui/core";
+import axios from 'axios';
 
-const AddUser = () => {
+const AddUser = (props) => {
   var userData = {
     name: "",
     email: "",
@@ -23,9 +24,22 @@ const AddUser = () => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  const sendFormData = ()  => {
-    console.log(inputValue);
-  };
+  const sendFormData = async()  => {
+    // console.log(inputValue);
+    try{
+      const config={
+          headers:{
+              'Content-type':'application/json'
+          }
+      }
+      await axios.post('/api/user/', inputValue, config);
+      window.location = '/';
+    }catch(err){
+      const errors=err.response.data.error; //
+      console.log(errors)
+   }
+  }
+
   return (
     <Fragment>
       <div>

@@ -8,10 +8,9 @@ const Home=()=> {
   return (
       <Fragment>
         <div>
-          Home...
           <AddUser />
           <TableFormat />
-          <DeleteUser />
+          {/* <DeleteUser /> */}
           <Graph />
         </div>
       </Fragment>

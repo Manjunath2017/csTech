@@ -4,11 +4,7 @@ import { TableContainer,
   TableCell,
   TableRow,
   Table,
-  TextField,
-  MenuItem,
-  InputLabel,
-  Select,
-  FormControl
+  TableBody
       } from '@material-ui/core';
 
 import axios from "axios";
@@ -44,6 +40,22 @@ const TableFormat=()=> {
                     <TableCell align="center" className="tableHeader">Action</TableCell>  
                   </TableRow>
                 </TableHead>
+                <TableBody>
+
+                   {
+            result ? result.map(user=>
+              <TableRow key={user._id}>
+                <TableCell align="left">{user.name}</TableCell>
+                <TableCell align="center">{user.email}</TableCell>
+                <TableCell align="center">{user.salary}</TableCell>
+                <TableCell align="center">{user.designation}</TableCell>
+              </TableRow>
+                    
+                ) : (
+                    <h1>please wait</h1>
+                )
+        }
+                </TableBody>
               </Table>  
             </TableContainer> 
         </div>

@@ -6,8 +6,8 @@ const user = mongoose.Schema({
         type:String,
         require:[true, 'Name is required!'],
         trim:true,
-        minLength:[2, 'Length is to shot!']
-
+        minLength:[2, 'Length is to shot!'],
+        lowercase: true
     },
     email:{
         type:String,

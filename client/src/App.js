@@ -5,7 +5,6 @@ import Home from './components/Home';
 const App=()=> {
   return(
   <Fragment>
-      <h1>App</h1>
       <Home />
    </Fragment>
 )};

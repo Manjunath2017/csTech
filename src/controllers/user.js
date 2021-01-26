@@ -63,7 +63,9 @@ module.exports.findByNameAndEmail = async(request, response)=>{
         console.log(name, email);
 
         //db.newusers.find({"name":{$regex:/Manjun/}, "email":{$regex:/m/} }).pretty();
-        // const result = await user.find({"name":`{$regrex:/${name}/}` , "email":`{$regrex:/${email}/}`});
+        // const result = await user.find({"name":{$regrex:new RegExp(name) } , "email":{$regrex:new RegExp(email) } });
+        const result = await user.find({"name":{$regrex:name, $options: 'i'} });
+
         console.log(result);
         response.status(200).send(result);
     }catch(error){

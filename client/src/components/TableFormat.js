@@ -112,22 +112,22 @@ const searchData = e =>{
         <Grid item xs={12} md={12} sm={12} className="card">
         <TableContainer>
           <Table>
-            <TableHead >
+            <TableHead style={{backgroundColor:"#3F51B5", color:"#fff"}} >
               <TableRow>
                 <TableCell align="center">
-                  <h2> Name </h2>
+                  <h2 style={{color:"#fff"}} > Name </h2>
                 </TableCell>
                 <TableCell align="center"  className="tableHeader">
-                    <h2> Email </h2>
+                    <h2 style={{color:"#fff"}}> Email </h2>
                 </TableCell>
                 <TableCell align="center"  className="tableHeader">
-                    <h2> Salary </h2>
+                    <h2 style={{color:"#fff"}}> Salary </h2>
                 </TableCell>
                 <TableCell align="center"  className="tableHeader">
-                    <h2> Designation </h2>
+                    <h2 style={{color:"#fff"}}> Designation </h2>
                 </TableCell>
                 <TableCell align="right" className="tableHeader">
-                    <h2> Action </h2>
+                    <h2 style={{color:"#fff"}}> Action </h2>
                 </TableCell>
                 <TableCell align="center" className="tableHeader"></TableCell>
               </TableRow>

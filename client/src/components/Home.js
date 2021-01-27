@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import AddUser from './AddUser';
-import DeleteUser from './DeleteUser';
+// import DeleteUser from './DeleteUser';
 import Graph from './Graph';
 import TableFormat from './TableFormat'
 

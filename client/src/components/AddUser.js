@@ -5,7 +5,10 @@ import {
   CardContent,
   TextField,
   Grid,
-  NativeSelect
+  NativeSelect,
+  Toolbar,
+  Typography,
+  AppBar
 } from "@material-ui/core";
 import axios from 'axios';
 
@@ -52,7 +55,16 @@ const AddUser = () => {
   return (
     <Fragment>
       <div>
+      <Grid container justify="center" style={{border:'1px solid #D0D0D0' }}>
         <Grid container justify="center">
+          <AppBar position="static" >
+            <Toolbar>
+              <Typography variant="h3" style={{ "margin": "0 auto"}}>
+                Add Users
+                </Typography>
+            </Toolbar>
+          </AppBar>
+        </Grid>
           <Grid item xs={12} md={5} sm={5} className="card">
             <CardContent>
               <TextField fullWidth

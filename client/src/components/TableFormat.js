@@ -80,7 +80,7 @@ const searchData = e =>{
     <Fragment>
       <div>
       <Grid container justify="center">
-          <Grid item xs={12} md={5} sm={5} className="card">
+          <Grid item xs={12} md={4} sm={4} className="card">
             <CardContent>
               <TextField fullWidth
                 label="Name"
@@ -92,7 +92,7 @@ const searchData = e =>{
               />
             </CardContent>
           </Grid>
-          <Grid item xs={12} md={5} sm={5} className="card">
+          <Grid item xs={12} md={4} sm={4} className="card">
             <CardContent>
               <TextField fullWidth
                 label="Email"
@@ -104,38 +104,30 @@ const searchData = e =>{
               />
             </CardContent>
           </Grid>
-          <Grid item xs={12} md={5} sm={5} className="card">
-          <CardContent color="secondary">
-            <Button fullWidth variant="contained" color="primary" onClick = { searchData } > Submit</Button>
-            </CardContent>
+          <Grid item xs={12} md={4} sm={4} className="card" style={{marginTop:"25px"}}> 
+            <Button fullWidth variant="contained" color="primary" onClick = { searchData } > Search</Button>
           </Grid>
         </Grid>
+        <Grid container justify="center" style={{border:'1px solid #D0D0D0'}}>
+        <Grid item xs={12} md={12} sm={12} className="card">
         <TableContainer>
           <Table>
-            <TableHead>
+            <TableHead >
               <TableRow>
-                <TableCell align="center" className="tableHeader">
-                  Name
-                  {/* <TextField fullWidth
-                    label="Name"
-                    color="secondary"
-                    onChange={searchByName}
-                    name="name"
-                    // value={name}
-                    required={true}
-                  /> */}
+                <TableCell align="center">
+                  <h2> Name </h2>
                 </TableCell>
-                <TableCell align="center" className="tableHeader">
-                  Email
+                <TableCell align="center"  className="tableHeader">
+                    <h2> Email </h2>
                 </TableCell>
-                <TableCell align="center" className="tableHeader">
-                  Salary
+                <TableCell align="center"  className="tableHeader">
+                    <h2> Salary </h2>
                 </TableCell>
-                <TableCell align="center" className="tableHeader">
-                  Designation
+                <TableCell align="center"  className="tableHeader">
+                    <h2> Designation </h2>
                 </TableCell>
                 <TableCell align="right" className="tableHeader">
-                  Action
+                    <h2> Action </h2>
                 </TableCell>
                 <TableCell align="center" className="tableHeader"></TableCell>
               </TableRow>
@@ -162,6 +154,8 @@ const searchData = e =>{
             </TableBody>
           </Table>
         </TableContainer>
+        </Grid>
+        </Grid>
       </div>
     </Fragment>
   );

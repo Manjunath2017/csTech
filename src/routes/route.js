@@ -1,15 +1,19 @@
-const router = require('express').Router();
-const {addUser, getUsers, getSingleUser, editUser, deleteUser, findByNameAndEmail} = require('../controllers/user');
+const router = require('express').Router()
+const {
+  addUser,
+  getUsers,
+  getSingleUser,
+  editUser,
+  deleteUser,
+  findByNameAndEmail,
+} = require('../controllers/user')
 
-
-router.post('/user', addUser);
-router.get('/users', getUsers);
+router.post('/user', addUser)
+router.get('/users', getUsers)
 // router.get('/user/:id', getSingleUser);
-router.get('/user/filter/', findByNameAndEmail);
+router.post('/user/filter/', findByNameAndEmail)
 
-router.patch('/user/:id', editUser);
-router.delete('/user/:id', deleteUser);
+router.patch('/user/:id', editUser)
+router.delete('/user/:id', deleteUser)
 
-
-
-module.exports = router;
+module.exports = router

@@ -1,8 +1,8 @@
 # Project description
 
-</ br>-Perform CRUD operation with html controls using MERN stack.
-</ br>-Use ReactJS validation
-</ br>-Create graph and display number of users registering on daly bases
+* -Perform CRUD operation with html controls using MERN stack.
+* -Use ReactJS validation
+* -Create graph and display number of users registering on daly bases
 
 # How to run a project
 1) npm i
